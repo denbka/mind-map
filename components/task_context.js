@@ -12,16 +12,9 @@ const context = createContext({
 
 export const useTasks = () => useContext(context)
 
-//Контекст(Провайдер) это по сути хранилище, чтобы не передавать пропсы очень коряво, мы обернули все приложение в этот провайдер,
-// а через хук который выше, мы получаем данные из любого места приложения
-
-// здесь у нас происходит работа с данными
-// useState используется для циклов и отрисовки, useSharedValue, useDerivedValue(в компонентах) используются для анимаций, для жестов, все что не касается работы с данными
-
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([])
   const [relations, setRelations] = useState([])
-  // useSharedValue это тот же юзстейт, только мутабельный и не перерисовывает компонент, используется для анимаций
   const relationPositions = useSharedValue({})
   const [focusedTaskId, setFocusedTaskId] = useState(null)
 
